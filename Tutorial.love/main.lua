@@ -146,13 +146,13 @@ function love.draw()
   love.graphics.draw(player.image, player.x, player.y,0,0.25,0.25)
 
   -- Bullets
-  love.graphics.setColor(255,255,255)
+  --love.graphics.setColor(255,255,255)
   for _,b in pairs(player.bullets) do
     love.graphics.rectangle("fill",b.x,b.y,10,10)
   end
 
   -- Enemies 
-  love.graphics.setColor(255,255,255)
+  --love.graphics.setColor(255,255,255)
   for _,e in pairs(enemies_controller.enemies) do
     love.graphics.draw(enemies_controller.image,e.x,e.y,0,0.2,0.2)
   end

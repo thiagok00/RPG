@@ -20,7 +20,7 @@ function love.load()
   player.width = 254/4
   player.height = 182/4
   player.cooldown = 0
-  player.speed = 10
+  player.speed = 5
   player.fire_sound = love.audio.newSource('Laser_Shoot2.wav')
 
   player.fire = function ()
@@ -91,22 +91,19 @@ function love.update(dt)
   end
   -- Handling keyboard events
   if love.keyboard.isDown("right") then
-    player.x = player.x + player.speed
+    if player.x < 830 - player.width then
+      player.x = player.x + player.speed
+    end
   elseif love.keyboard.isDown("left") then
-    player.x = player.x - player.speed
+    if player.x > 0 - player.width/2 then
+      player.x = player.x - player.speed
+    end
   end
-  --[[ Move Down
-	if love.keyboard.isDown("up") then
-		player.y = player.y - 1
-	elseif love.keyboard.isDown("down") then
-		player.y = player.y + 1		
-	end
-	--]]
   if love.keyboard.isDown("space") then
     player.fire()
   end
 
-
+  --Removing things off screen
   for i,b in pairs(player.bullets) do 
     if b.y < -20 then
       table.remove(player.bullets,i)
